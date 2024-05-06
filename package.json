@@ -1,0 +1,18 @@
+{
+  "name": "Js-project(slot-machine)",
+  "version": "1.0.0",
+  "description": "slot-machine node js project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MarlonM-Dev/Slot-machine.git"
+  },
+  "author": "marlon",
+  "license": "ISC",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
