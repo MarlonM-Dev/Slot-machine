@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const resultElement = document.getElementById("result");
   const playAgainButton = document.getElementById("play-again-btn");
 
-  let balance = 0; // Initial balance
+  let balance = 0;
 
   function startGame() {
     balance = prompt("Please enter your initial balance:");
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  startGame(); // Start the game by asking for initial balance
+  startGame();
 
   spinButton.addEventListener("click", function () {
     const betPerLine = parseInt(betInput.value);
@@ -41,22 +41,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const reels = spin();
     displayReels(reels);
     const winnings = getWinnings(reels, betPerLine, numberOfLines);
-    balance -= totalBet; // Deduct the total bet from the balance
+    balance -= totalBet;
 
-    // Randomizing win/lose based on the given rates
-    const randomNum = Math.random(); // Generate a random number between 0 and 1
-    const losingRate = 0.75; // 75% losing rate
-    const winningRate = 0.35; // 35% winning rate
+    const randomNum = Math.random();
+    const losingRate = 0.75;
+    const winningRate = 0.35;
 
     if (randomNum <= losingRate) {
-      // Losing
       resultElement.textContent = "Sorry, you didn't win this time.";
     } else if (randomNum <= losingRate + winningRate) {
-      // Winning
-      balance += winnings; // Add winnings to the balance
+      balance += winnings;
       resultElement.textContent = "Congratulations! You won $" + winnings + ".";
     } else {
-      // No win, no loss
       resultElement.textContent = "You didn't win or lose anything.";
     }
 
@@ -94,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function displayReels(reels) {
     const reelElements = document.querySelectorAll(".reel");
     for (let i = 0; i < reels.length; i++) {
-      reelElements[i].innerHTML = ""; // Clear previous content
+      reelElements[i].innerHTML = "";
       for (let j = 0; j < reels[i].length; j++) {
         const img = document.createElement("img");
         img.src = getImageUrl(reels[i][j]);
@@ -104,17 +100,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function getImageUrl(symbol) {
-    // Replace this with actual image URLs for each symbol
-    // For example:
-    // if (symbol === "A") return "url_for_symbol_A_image";
-    // else if (symbol === "B") return "url_for_symbol_B_image";
-    // ...
-    // For now, we'll use placeholders
     return "https://via.placeholder.com/120x160.png?text=" + symbol;
   }
 
   function getWinnings(reels, betPerLine, numberOfLines) {
-    // Adjusted winning conditions to be more challenging
     const winningSymbols = ["A", "B", "C", "D"];
     let winnings = 0;
 
@@ -129,7 +118,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
-      // Adjust the winning amount based on the number of matching symbols
       winnings += matchingSymbols * betPerLine;
     }
 
